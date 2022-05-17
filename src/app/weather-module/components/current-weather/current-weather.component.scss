@@ -1,0 +1,11 @@
+.current_weather_card {
+  background-color: rgba(198, 244, 255, 0.3);
+  width: 15%;
+  margin: auto;
+  font-family: 'Courier New', Courier, monospace;
+
+  .location_data {
+    font-weight: bolder;
+  }
+
+}

@@ -1,0 +1,13 @@
+
+    <div  *ngFor="let weather of _weather.hourBasedForecast$ | async let i=index;">
+      <ng-container *ngIf="i % 2 === 0">
+        <div class="card">
+          <div>{{weather.DateTime | extractTimeFromDate}}</div>
+        <div class="weather-icon">{{weather.IconPhrase}}</div>
+        <div class="weather-icon">{{weather.Temperature.Value}} {{weather.Temperature.Unit}} </div>
+        <img src="{{generateIconUrl(weather?.WeatherIcon)}}" alt="weather_icon">
+      </div>
+    </ng-container>
+  </div>
+
+

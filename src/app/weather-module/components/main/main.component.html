@@ -1,0 +1,7 @@
+<div class="components">
+  <app-city-search [options]="options" (keyupEvent)="searchCity($event)">
+  </app-city-search>
+  <app-current-weather [generateIconUrl]="generateIconUrl"></app-current-weather>
+  <app-hourly-weather-forecast class="hourly_weather_forecast" [generateIconUrl]="generateIconUrl">
+  </app-hourly-weather-forecast>
+</div>

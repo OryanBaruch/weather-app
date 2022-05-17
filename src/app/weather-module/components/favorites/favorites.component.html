@@ -1,0 +1,23 @@
+<div class="favorites_wrapper">
+
+  <ng-container *ngFor="let data of _weather.favoriteLocations">
+    <div class="card">
+      <div
+      *ngFor="let locationData of data.location  | keyvalue"
+      [routerLink]="['/main', data.location.cityName]">
+      {{locationData.value}}
+    </div>
+
+    <div *ngFor="let weatherData of data.weather  | keyvalue">
+      <div>
+        {{weatherData.value}}
+      </div>
+      <div *ngIf="weatherData.key==='WeatherIcon'">
+        <img src="{{generateIconUrl(weatherData.value)}}" alt="weather_icon" />
+      </div>
+    </div>
+
+  </div>
+</ng-container>
+
+</div>

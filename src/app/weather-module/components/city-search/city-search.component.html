@@ -1,0 +1,17 @@
+<div class="autocomplete_button">
+<form [formGroup]="searchForm">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Search</mat-label>
+      <input type="text" #city placeholder="Pick one" aria-label="Search" matInput formControlName="city"
+      placeholder="Search city..." [matAutocomplete]="auto">
+      <mat-autocomplete (optionSelected)="onSelectionChanged($event)" #city #auto="matAutocomplete">
+        <mat-option *ngFor="let option of options | uniqFilter: 'LocalizedName'"
+        [value]="option?.LocalizedName?.toLowerCase()">
+        {{option?.LocalizedName}},
+        {{option?.Country?.LocalizedName}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <button mat-raised-button class="btn"color="primary" #submit [disabled]="!searchForm.valid || !city.value " (click)="searchCity(city.value);searchForm.reset();" mat-button color="primary">Search</button>
+</form>
+</div>

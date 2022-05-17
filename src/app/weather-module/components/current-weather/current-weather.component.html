@@ -1,0 +1,24 @@
+<ng-container>
+  <mat-card class="current_weather_card">
+    <div class="location_data" #data *ngFor="let locationData of _weather.locationData | async | keyvalue">
+      <span class="span" *ngIf="locationData.key!=='key'">
+        {{locationData.value}}
+      </span>
+    </div>
+    <div class="current_weather_data"  *ngFor="let data of _weather.weatherData | async | keyvalue">
+        <span  *ngIf="data.key!=='isFavorite' && data.key!=='WeatherIcon'">
+          {{data.value }}
+        </span>
+      <div>
+        <button *ngIf="data.key==='isFavorite'" mat-raised-button color="primary"
+          (click)="toggleLocationToFavorites(_weather.locationData, _weather.weatherData)">
+          {{data.value   ? 'unsave' : 'save'}}
+        </button>
+        <div *ngIf="data.key==='WeatherIcon'">
+          <img src="{{generateIconUrl(data.value)}}" alt="weather_icon" />
+        </div>
+      </div>
+    </div>
+  </mat-card>
+
+</ng-container>
