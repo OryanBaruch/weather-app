@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { of, forkJoin, Subject, BehaviorSubject } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 import { CurrentLocationData, Weather } from '../interfaces/data-structure.interface';
-import { environment  } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
