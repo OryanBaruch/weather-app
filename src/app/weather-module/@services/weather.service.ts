@@ -14,7 +14,7 @@ export class WeatherService {
   public hourBasedForecast$: Subject<Weather[]> = new Subject<Weather[]>();
   public locationData: BehaviorSubject<CurrentLocationData> = new BehaviorSubject<CurrentLocationData>(null);
   public favoriteLocations = [];
-  public key:string='1FuDm5EfaPopTdW9aKcJgBOFEDFcJSYc'
+  public key:string='xjIcAJXAKAsGFmITmbkaa9HrA4aVoTjN'
 
   public weatherDataObj: Weather = {}
   public locationDataObj: CurrentLocationData = {}
