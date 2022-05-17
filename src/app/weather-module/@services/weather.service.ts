@@ -14,6 +14,7 @@ export class WeatherService {
   public hourBasedForecast$: Subject<Weather[]> = new Subject<Weather[]>();
   public locationData: BehaviorSubject<CurrentLocationData> = new BehaviorSubject<CurrentLocationData>(null);
   public favoriteLocations = [];
+  public key:string='1FuDm5EfaPopTdW9aKcJgBOFEDFcJSYc'
 
   public weatherDataObj: Weather = {}
   public locationDataObj: CurrentLocationData = {}
@@ -21,18 +22,18 @@ export class WeatherService {
   constructor(public http: HttpClient) { }
 
   public currentLocationData(lat: number, long: number): Observable<CurrentLocationData> {
-    return this.http.get<CurrentLocationData>(`http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=${environment.key}&q=${lat}%2C${long}`)
+    return this.http.get<CurrentLocationData>(`http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=${this.key}&q=${lat}%2C${long}`)
   }
   public currentWeather(locationKey: string): Observable<Weather> {
-    return this.http.get<Weather>(`http://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${environment.key}`)
+    return this.http.get<Weather>(`http://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${this.key}`)
   }
 
   public dailyForcastByHours(locationKey: string): Observable<Weather[]> {
-    return this.http.get<Weather[]>(`http://dataservice.accuweather.com/forecasts/v1/hourly/12hour/${locationKey}?apikey=${environment.key}`)
+    return this.http.get<Weather[]>(`http://dataservice.accuweather.com/forecasts/v1/hourly/12hour/${locationKey}?apikey=${this.key}`)
   }
 
   public searchCity(searchText: string): Observable<CurrentLocationData[]> {
-    return this.http.get<CurrentLocationData[]>(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${environment.key}&q=${searchText}`)
+    return this.http.get<CurrentLocationData[]>(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${this.key}&q=${searchText}`)
   }
 
   public getWeatherDataBySearch(cityKey: string, cityName: string, countryName: string):
